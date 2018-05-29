@@ -6,7 +6,7 @@ class Navbar extends Component {
         return (
             <nav className="navbar">
                 <span className="open-slide">
-                    <a href="#" onClick={this.props.openSearchSlide}>
+                    <a onClick={this.props.openSearchSlide}>
                         <svg width="30" height="30">
                             <path d="M0,5 30,5" stroke="#fff" strokeWidth="5"/>
                             <path d="M0,14 30,14" stroke="#fff" strokeWidth="5"/>
