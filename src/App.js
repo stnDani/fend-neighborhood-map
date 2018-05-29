@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './Navbar';
+import ReactDOM from 'react-dom';
+import SearchSlide from './SearchSlide';
+import LocationsMap from './LocationsMap';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.slideSearch = React.createRef();
+    this.locationsMap = React.createRef();
+  }
+
+  openSearchSlide = () => {
+      ReactDOM.findDOMNode(this.slideSearch.current).style.width = '250px';
+      ReactDOM.findDOMNode(this.locationsMap.current).style.marginLeft = '250px';
+  };
+
+  closeSearchSlide = () => {
+      ReactDOM.findDOMNode(this.slideSearch.current).style.width = '0';
+      ReactDOM.findDOMNode(this.locationsMap.current).style.marginLeft = '0';
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Navbar openSearchSlide={this.openSearchSlide}/>
+        <SearchSlide ref={this.slideSearch} closeSearchSlide={this.closeSearchSlide}/>
+        <LocationsMap ref={this.locationsMap} />
       </div>
     );
   }
