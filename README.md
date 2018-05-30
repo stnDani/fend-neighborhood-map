@@ -8,6 +8,7 @@ In order to be able to run the project you should follow the below steps:
 * install MetaTags library with `npm install react-meta-tags`
 * install escapeRegExp library with `npm install escape-string-regexp`
 * install sortBy library with `npm install sort-by`
+* install react error boundary library with `npm install react-error-boundary`
 * START the development server with `npm start`
 
 ##Third party

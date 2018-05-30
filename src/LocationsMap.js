@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer.js';
-import Foursquare from './Foursquare'
+import Foursquare from './Foursquare';
+import ErrorBoundary from 'react-error-boundary';
 
 
 const GoogleMapExample = withScriptjs(withGoogleMap(props => (
@@ -19,7 +20,8 @@ const GoogleMapExample = withScriptjs(withGoogleMap(props => (
                     onClick={ () => { props.showInfo(index) } }
                     >
                         { (props.showInfoIndex === index) &&
-                        <InfoWindow>
+                        <InfoWindow
+                            containerProps={{tabIndex: 0}}>
                             <Foursquare location={location.latlng} locationName={location.name} venueId={location.venueId}/>
                         </InfoWindow>
                         }
@@ -56,6 +58,7 @@ class LocationsMap extends Component {
 
         return (
             <div ref={this.locationsMap} className="map">
+                <ErrorBoundary>
                 <GoogleMapExample
                     onMapLoad={this.onMapLoad}
                     className="gMap"
@@ -68,6 +71,7 @@ class LocationsMap extends Component {
                     showInfo={this.showInfo}
                     showInfoIndex={this.state.showInfoIndex}
                 />
+                </ErrorBoundary>
             </div>
         )
     }
