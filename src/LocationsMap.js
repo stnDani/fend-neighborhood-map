@@ -15,7 +15,7 @@ const GoogleMapExample = withScriptjs(withGoogleMap(props => (
                 return (<Marker
                     key={location.id}
                     position={{ lat: location.latlng.lat, lng: location.latlng.lng}}
-                    animation= {window.google.maps.Animation.DROP}
+                    animation= {props.showInfoIndex === index ? window.google.maps.Animation.BOUNCE : window.google.maps.Animation.DROP}
                     onClick={ () => { props.showInfo(index) } }
                     >
                         { (props.showInfoIndex === index) &&
