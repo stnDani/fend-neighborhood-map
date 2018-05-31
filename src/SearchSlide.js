@@ -69,9 +69,9 @@ class SearchSlide extends Component {
 
                     )}
 
-                    <ol className={'locations-list'}>
+                    <ol className={['locations-list', this.props.showList ? '' : 'hide-list'].join(' ')}>
                         {showingLocations.map((location) => (
-                            <li key={location.id} className='locations-list-item'>
+                            <li key={location.id} className='locations-list-item' tabIndex={0} onClick={(event) => this.updateQuery(event.currentTarget.textContent)}>
                                 <div className='location-details'>{location.name}</div>
                             </li>
                         ))}

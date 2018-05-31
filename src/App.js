@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.slideSearch = React.createRef();
     this.locationsMap = React.createRef();
+    this.showList = null;
   }
 
   state = {
@@ -66,11 +67,17 @@ class App extends Component {
   openSearchSlide = () => {
       ReactDOM.findDOMNode(this.slideSearch.current).style.width = '250px';
       this.slideSearch.current.openSlide();
+      this.setState({
+          showList:true
+      });
   };
 
   closeSearchSlide = () => {
       ReactDOM.findDOMNode(this.slideSearch.current).style.width = '0';
       this.slideSearch.current.closeSlide();
+      this.setState({
+          showList:false
+      });
   };
 
   render() {
@@ -81,7 +88,7 @@ class App extends Component {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </MetaTags>
         <Navbar openSearchSlide={this.openSearchSlide}/>
-        <SearchSlide ref={this.slideSearch} locations={this.state.locations} closeSearchSlide={this.closeSearchSlide}/>
+        <SearchSlide ref={this.slideSearch} locations={this.state.locations} closeSearchSlide={this.closeSearchSlide} showList={this.state.showList}/>
       </div>
     );
   }

@@ -118,6 +118,10 @@
     text-align: center;
 }
 
+.hide-list{
+    display: none;
+}
+
 .location-details {
     flex: 1;
     overflow: hidden;
